@@ -1,0 +1,27 @@
+
+
+
+links components are preloaded when it visible to the browser's viewport
+
+multiple fetching on a single page is actually a bad idea example promise[getUser(), getUserStuff()]
+always choose data streaming instead (loading.tsx or suspense)
+tip: when using suspense over and over again in the same page. use the key prop, so react knows we suspense differently
+
+when using state hooks, think first if searchParams is applicable. one advtgs:
+- search paramso object is accesible trough server components
+- sharable links and good for SEO
+
+router.push vs router.replace:
+push: traditional a tag that just pushes the browser's history stack
+replace: replaces the browser's history stack (walang madadagdag) use this when
+  - the page might break when navigating back
+  - search queries
+  - when you are linking to the same page (eg. /dashboard will route to /dashboard)
+
+When to use the useSearchParams() hook vs. the searchParams prop?
+As a general rule, if you want to read the params from the client, use the useSearchParams() hook as this avoids having to go back to the server.
+
+
+gets kona, by default naka cache yung fetch() mo, kaya pag nag npm run build ka, circle yung icon meaning its static
+pero kapag nag lagay ka ng cache no-store, magiging serverside rendering naman sya pag nag npm run build ka
+
