@@ -2,12 +2,10 @@ import ProfileCard from "@/components/profile-card"
 import { Suspense } from "react"
 
 // export const fetchCache = 'force-cache'
-// export const revalidate = 5
+export const revalidate = 5
 
 export default async function Home() {
-  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Manila", {
-    next: { revalidate: 5 },
-  })
+  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Manila")
 
   // const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Manila", {
   //   cache: "no-store",
@@ -23,6 +21,7 @@ export default async function Home() {
       <nav className="flex items-center gap-2 justify-between p-4 rounded-lg bg-zinc-50 shadow-lg">
         <h1>This is a static nav</h1>
         <p>{new Date(datetime).toLocaleTimeString()}</p>
+        <p>{datetime}</p>
         <ul className="flex items-center gap-3">
           <li>Home</li>
           <li>About</li>
