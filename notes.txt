@@ -25,3 +25,21 @@ As a general rule, if you want to read the params from the client, use the useSe
 gets kona, by default naka cache yung fetch() mo, kaya pag nag npm run build ka, circle yung icon meaning its static
 pero kapag nag lagay ka ng cache no-store, magiging serverside rendering naman sya pag nag npm run build ka
 
+
+revalidate on `npm start` doesn't work, you have to deploy in on prod to see result
+
+
+
+equivalents:
+`cache: "no-store"` => export const dynamic = 'force-dynamic'
+`next: { revalidate: 5 } => export const revalidate = 5
+
+with `export const`:
+- you can defined export const, and it will affect all fetch down the tree
+- when you defined it, all fetches stuff are affective within the file
+
+with `fetch cache or next`:
+- specified to only one fetch which is good if you have multiple fetch 
+- not good if your using 3rd party library to fetch like prisma or mongodb
+  - in that case you will use `export const` or move them to the `api` and use `cache` or `next`
+
