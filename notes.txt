@@ -37,9 +37,17 @@ equivalents:
 with `export const`:
 - you can defined export const, and it will affect all fetch down the tree
 - when you defined it, all fetches stuff are affective within the file
+- can only defined in `layout.tsx` or `page.tsx` only
 
 with `fetch cache or next`:
 - specified to only one fetch which is good if you have multiple fetch 
 - not good if your using 3rd party library to fetch like prisma or mongodb
   - in that case you will use `export const` or move them to the `api` and use `cache` or `next`
+- this can be defined for any components, not just `layout.tsx` or `page.tsx`
+
+
+`cache: "force-cache"` will only default on `page.tsx` or `layout.tsx` so you don't have to defined them
+but if you aren't on page.tsx or layout.tsx, you have to opt that property `cache: "force-cache"` 
+so i think its a good practice to just always opt them out 
+
 
