@@ -1,5 +1,7 @@
 "use server"
 
+import { cache } from "react"
+
 
 export async function getProfile() {
   // const profileRes = await fetch("https://api.github.com/users/loydcose", {cache: "no-store"})
@@ -17,3 +19,15 @@ export async function getTime() {
 
   return time
 }
+
+export const getRandomNumber = cache(async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  return Math.random()
+})
+
+export const getRandomNumber3 = cache(async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  return Math.random()
+})
