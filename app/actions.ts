@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidateTag, unstable_cache } from "next/cache"
 import { cache } from "react"
 
 
@@ -30,4 +31,25 @@ export const getRandomNumber3 = cache(async () => {
   await new Promise(resolve => setTimeout(resolve, 1000))
 
   return Math.random()
+})
+
+
+
+export const getCachedTime = unstable_cache(async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  return new Date().toLocaleTimeString()
+}, ["time"], {tags: ["time"]})
+
+
+export const revalidateCachedTime = async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  revalidateTag("time")
+}
+
+
+export const getTimeOnLayoutCache = cache(async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  return new Date().toLocaleTimeString()
 })
